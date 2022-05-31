@@ -55,7 +55,7 @@ spec:
         - -c
         - |
           set -ex
-          git clone -b master --depth=1 https://github.com/luisbazo/InstallNativeToolkit.git /source
+          git clone -b main --depth=1 https://github.com/luisbazo/InstallNativeToolkit.git /source
           cd /source
 
           # Customize Installation
