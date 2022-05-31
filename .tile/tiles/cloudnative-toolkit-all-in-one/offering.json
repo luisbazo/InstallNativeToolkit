@@ -1,0 +1,337 @@
+{
+  "label": "201. Cloud-Native Toolkit All-In-One",
+  "name": "#OFFERING",
+  "offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/terraform.svg",
+  "tags": [
+    "terraform",
+    "dev_ops"
+  ],
+  "rating": {},
+  "short_description": "Installs a common set of CNCF DevOps tools used by developers with Red Hat OpenShift or IBM Kubernetes managed container service",
+  "kinds": [
+    {
+      "format_kind": "terraform",
+      "install_kind": "terraform",
+      "target_kind": "terraform",
+      "versions": [
+        {
+          "version": "#VERSION",
+          "catalog_id": "#CATALOG_ID",
+          "repo_url": "https://github.com/#REPO_URL/",
+          "tgz_url": "https://github.com/#REPO_URL/releases/download/#VERSION/#OFFERING.tar.gz",
+          "configuration": [
+            {
+              "key": "cluster_exists",
+              "type": "string",
+              "default_value": "false",
+              "description": "Flag indicating that the cluster already exists (true or false)",
+              "required": true,
+              "hidden": true
+            },
+            {
+              "key": "cluster_type",
+              "type": "string",
+              "default_value": "ocp46",
+              "description": "The type of cluster that will be provisioned",
+              "options": [
+                {"label": "Kubernetes", "value": "kubernetes"},
+                {"label": "OpenShift 3.x", "value": "ocp3"},
+                {"label": "OpenShift 4.3", "value": "ocp43"},
+                {"label": "OpenShift 4.4", "value": "ocp44"},
+                {"label": "OpenShift 4.5", "value": "ocp45"},
+                {"label": "OpenShift 4.6", "value": "ocp46"}
+              ],
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "ibmcloud_api_key",
+              "type": "password",
+              "description": "The API key from IBM Cloud Console that has ClusterAdmin access and supports service creation",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "resource_group_name",
+              "type": "string",
+              "description": "Existing resource group that contains the cluster",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "region",
+              "type": "string",
+              "description": "The region where the services should be provisioned",
+              "options": [
+                {"label": "us-south", "value": "us-south"},
+                {"label": "us-east", "value": "us-east"},
+                {"label": "eu-de", "value": "eu-de"},
+                {"label": "eu-gb", "value": "eu-gb"},
+                {"label": "au-syd", "value": "au-syd"},
+                {"label": "jp-tok", "value": "jp-tok"}
+              ],
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "cluster_name",
+              "type": "string",
+              "default_value": "",
+              "description": "The name of the cluster",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "vpc_cluster",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that the cluster has been built on VPC infrastructure",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "registry_type",
+              "type": "string",
+              "default_value": "icr",
+              "description": "The type of the image registry",
+              "options": [
+                {"label": "IBM Container Registry", "value": "icr"},
+                {"label": "OCP Internal", "value": "ocp"},
+                {"label": "Other", "value": "other"},
+                {"label": "None", "value": "none"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "registry_namespace",
+              "type": "string",
+              "description": "The namespace of the image registry (used for icr and other registry types)",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "registry_host",
+              "type": "string",
+              "description": "The host of the image registry (used for other registry types)",
+              "default_value": "",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "registry_user",
+              "type": "string",
+              "description": "The user to access the image registry (used for other registry types)",
+              "default_value": "",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "registry_password",
+              "type": "password",
+              "description": "The password to access the image registry (used for other registry types)",
+              "default_value": "",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "registry_url",
+              "type": "string",
+              "description": "The browser url to access the image registry (used for other registry types)",
+              "default_value": "",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_logdna",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that the a logdna instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_sysdig",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that a sysdig instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "private_vlan_id",
+              "type": "string",
+              "description": "The existing private VLAN id for the cluster for classic infrastructure",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "public_vlan_id",
+              "type": "string",
+              "description": "The existing public VLAN id for the cluster for classic infrastructure",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "vlan_datacenter",
+              "type": "string",
+              "description": "The VLAN datacenter where the cluster will be provisioned for Classic infrastructure",
+              "options": [
+                {"label": "ams01", "value": "ams01"},
+                {"label": "ams03", "value": "ams03"},
+                {"label": "che01", "value": "che01"},
+                {"label": "dal05", "value": "dal05"},
+                {"label": "dal06", "value": "dal06"},
+                {"label": "dal07", "value": "dal07"},
+                {"label": "dal09", "value": "dal09"},
+                {"label": "dal10", "value": "dal10"},
+                {"label": "dal12", "value": "dal12"},
+                {"label": "dal13", "value": "dal13"},
+                {"label": "fra02", "value": "fra02"},
+                {"label": "fra04", "value": "fra04"},
+                {"label": "fra05", "value": "fra05"},
+                {"label": "hkg02", "value": "hkg02"},
+                {"label": "hou02", "value": "hou02"},
+                {"label": "lon02", "value": "lon02"},
+                {"label": "lon04", "value": "lon04"},
+                {"label": "lon05", "value": "lon05"},
+                {"label": "lon06", "value": "lon06"},
+                {"label": "mel01", "value": "mel01"},
+                {"label": "mex01", "value": "mex01"},
+                {"label": "mil01", "value": "mil01"},
+                {"label": "mon01", "value": "mon01"},
+                {"label": "osa21", "value": "osa21"},
+                {"label": "osa22", "value": "osa22"},
+                {"label": "osa23", "value": "osa23"},
+                {"label": "osl01", "value": "osl01"},
+                {"label": "par01", "value": "par01"},
+                {"label": "par04", "value": "par04"},
+                {"label": "par05", "value": "par05"},
+                {"label": "par06", "value": "par06"},
+                {"label": "sao01", "value": "sao01"},
+                {"label": "sao04", "value": "sao04"},
+                {"label": "sao05", "value": "sao05"},
+                {"label": "sea01", "value": "sea01"},
+                {"label": "seo01", "value": "seo01"},
+                {"label": "sjc01", "value": "sjc01"},
+                {"label": "sjc03", "value": "sjc03"},
+                {"label": "sjc04", "value": "sjc04"},
+                {"label": "sng01", "value": "sng01"},
+                {"label": "syd01", "value": "syd01"},
+                {"label": "syd04", "value": "syd04"},
+                {"label": "syd05", "value": "syd05"},
+                {"label": "tok02", "value": "tok02"},
+                {"label": "tok04", "value": "tok04"},
+                {"label": "tok05", "value": "tok05"},
+                {"label": "tor01", "value": "tor01"},
+                {"label": "tor04", "value": "tor04"},
+                {"label": "tor05", "value": "tor05"},
+                {"label": "wdc01", "value": "wdc01"},
+                {"label": "wdc04", "value": "wdc04"},
+                {"label": "wdc06", "value": "wdc06"},
+                {"label": "wdc07", "value": "wdc07"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "vpc_zone_count",
+              "type": "string",
+              "default_value": "0",
+              "description": "The number of vpc zones",
+              "options": [
+                {"label": "0", "value": "0"},
+                {"label": "1", "value": "1"},
+                {"label": "2", "value": "2"},
+                {"label": "3", "value": "3"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "flavor",
+              "type": "string",
+              "default_value": "m3c.4x32",
+              "description": "The machine flavor that should be provisioned for each worker node",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "cluster_worker_count",
+              "type": "int",
+              "default_value": 3,
+              "description": "The number of worker nodes that will be created in each zone",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "source_control_type",
+              "type": "string",
+              "default_value": "github",
+              "options": [
+                {"label": "GitHub", "value": "github"},
+                {"label": "Gitlab", "value": "gitlab"},
+                {"label": "None", "value": "none"}
+              ],
+              "description": "The type of source control system to configure in the cluster",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "source_control_url",
+              "type": "string",
+              "default_value": "https://github.com",
+              "description": "The url of source control system to configure in the cluster",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "TF_VERSION",
+              "type": "string",
+              "default_value": "0.12",
+              "description": "The version of terraform that should be used",
+              "required": true,
+              "hidden": false
+            }
+          ],
+          "install": {
+            "instructions": "Some ContentN/A"
+          },
+          "entitlement": {
+            "provider_name": "free",
+            "provider_id": "free"
+          },
+          "install": {
+            "instructions": "N/A"
+          },
+          "licenses": [
+            {
+              "name": "LICENSE",
+              "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+          ],
+          "deprecated": false,
+          "long_description": "#LONG_DESCRIPTION"
+        }
+      ]
+    }
+  ],
+  "catalog_id": "#CATALOG_ID",
+  "hidden": false,
+  "provider": "IBM",
+  "repo_info": {
+    "type": "public_git"
+  }
+}

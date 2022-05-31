@@ -1,0 +1,154 @@
+{
+  "label": "200. Cloud-Native Toolkit SRE Tools",
+  "name": "#OFFERING",
+  "offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/terraform.svg",
+  "tags": [
+    "terraform",
+    "dev_ops"
+  ],
+  "rating": {},
+  "short_description": "Provisions Activity Tracker, Key Protect, LogDNA, Object Storage, and Sysdig into the resource group",
+  "kinds": [
+    {
+      "format_kind": "terraform",
+      "install_kind": "terraform",
+      "target_kind": "terraform",
+      "versions": [
+        {
+          "version": "#VERSION",
+          "catalog_id": "#CATALOG_ID",
+          "repo_url": "https://github.com/#REPO_URL/",
+          "tgz_url": "https://github.com/#REPO_URL/releases/download/#VERSION/#OFFERING.tar.gz",
+          "long_description": "#LONG_DESCRIPTION",
+          "configuration": [
+            {
+              "key": "resource_group_name",
+              "type": "string",
+              "description": "Existing resource group where the SRE tools should be provisioned",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "region",
+              "type": "string",
+              "description": "The region where the SRE tools should be provisioned",
+              "options": [
+                {"label": "us-south", "value": "us-south"},
+                {"label": "us-east", "value": "us-east"},
+                {"label": "eu-de", "value": "eu-de"},
+                {"label": "eu-gb", "value": "eu-gb"},
+                {"label": "au-syd", "value": "au-syd"},
+                {"label": "jp-tok", "value": "jp-tok"}
+              ],
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "ibmcloud_api_key",
+              "type": "password",
+              "description": "The IBM Cloud API key that has enough access to provision the SRE tools services",
+              "required": true,
+              "hidden": false
+            },
+            {
+              "key": "name_prefix",
+              "type": "string",
+              "default_value": "",
+              "description": "The prefix that will be used to build the service names",
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_logdna",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that the LogDNA instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_sysdig",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that the Sysdig instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_activity_tracker",
+              "type": "string",
+              "default_value": "false",
+              "description": "Flag indicating that the Activity Tracker instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_key_protect",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that the Key Protect instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "provision_object_storage",
+              "type": "string",
+              "default_value": "true",
+              "description": "Flag indicating that the Object Storage instance should be provisioned",
+              "options": [
+                {"label": "True", "value": "true"},
+                {"label": "False", "value": "false"}
+              ],
+              "required": false,
+              "hidden": false
+            },
+            {
+              "key": "TF_VERSION",
+              "type": "string",
+              "default_value": "0.12",
+              "description": "The version of terraform that should be used",
+              "required": true,
+              "hidden": false
+            }
+          ],
+          "entitlement": {
+            "provider_name": "free",
+            "provider_id": "free"
+          },
+          "install": {
+            "instructions": "N/A"
+          },
+          "licenses": [
+            {
+              "name": "LICENSE",
+              "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+          ],
+          "deprecated": false
+        }
+      ]
+    }
+  ],
+  "catalog_id": "#CATALOG_ID",
+  "hidden": false,
+  "provider": "IBM",
+  "repo_info": {
+    "type": "public_git"
+  }
+}
